@@ -19,6 +19,7 @@
 		390FFF29CE550C3EFC4C1AF7 /* libPods-ReactNativeOkta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C661AD995E1F2B8061F1CA1E /* libPods-ReactNativeOkta.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C8C2E33C4EBF4C58E171A055 /* libPods-ReactNativeOkta-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9304443293B52758F7FCD09B /* libPods-ReactNativeOkta-tvOS.a */; };
+		ED15E9B825E196610018D701 /* Polyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED15E9B725E196610018D701 /* Polyfill.swift */; };
 		FFB1F0EFB5C47426A6665A80 /* libPods-ReactNativeOkta-ReactNativeOktaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8460E28F1DC44FA01D94B9 /* libPods-ReactNativeOkta-ReactNativeOktaTests.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		B38AB5CD6E26019C5ED5DE9E /* Pods-ReactNativeOkta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeOkta.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeOkta/Pods-ReactNativeOkta.debug.xcconfig"; sourceTree = "<group>"; };
 		C661AD995E1F2B8061F1CA1E /* libPods-ReactNativeOkta.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativeOkta.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD61AB165F7452B83ED345B3 /* Pods-ReactNativeOkta-ReactNativeOktaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeOkta-ReactNativeOktaTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeOkta-ReactNativeOktaTests/Pods-ReactNativeOkta-ReactNativeOktaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ED15E9B725E196610018D701 /* Polyfill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polyfill.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F5B21139DA6F2292C2E3754C /* Pods-ReactNativeOkta-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeOkta-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeOkta-tvOS/Pods-ReactNativeOkta-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +163,6 @@
 				500FAFC4A793F54F774945B1 /* Pods-ReactNativeOkta-tvOSTests.debug.xcconfig */,
 				5ED0EA09D2FF2B52324F2D83 /* Pods-ReactNativeOkta-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +176,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				ED15E9B725E196610018D701 /* Polyfill.swift */,
 				13B07FAE1A68108700A75B9A /* ReactNativeOkta */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ReactNativeOktaTests */,
@@ -209,7 +211,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				3AC58AAF8D3BF74E22BA623A /* [CP] Embed Pods Frameworks */,
 				1E30DC59A923F65E58E87664 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -232,7 +233,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				6B8BF0A050CDE0D034FDBD67 /* [CP] Embed Pods Frameworks */,
 				FDE54027413163641671D914 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -296,7 +296,8 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						DevelopmentTeam = 5AV37GA24F;
+						LastSwiftMigration = 1240;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -455,42 +456,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		3AC58AAF8D3BF74E22BA623A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReactNativeOkta-ReactNativeOktaTests/Pods-ReactNativeOkta-ReactNativeOktaTests-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactNativeOkta-ReactNativeOktaTests/Pods-ReactNativeOkta-ReactNativeOktaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B8BF0A050CDE0D034FDBD67 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReactNativeOkta/Pods-ReactNativeOkta-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactNativeOkta/Pods-ReactNativeOkta-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8EDC643C6AE786572E39FD1A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -606,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED15E9B825E196610018D701 /* Polyfill.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -648,6 +614,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD61AB165F7452B83ED345B3 /* Pods-ReactNativeOkta-ReactNativeOktaTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -671,6 +638,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D9BCCE10D89A622C8FBECEE /* Pods-ReactNativeOkta-ReactNativeOktaTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = ReactNativeOktaTests/Info.plist;
@@ -694,6 +662,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AV37GA24F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ReactNativeOkta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -717,6 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AV37GA24F;
 				INFOPLIST_FILE = ReactNativeOkta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
