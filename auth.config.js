@@ -3,7 +3,7 @@ export default {
     clientId: '',
     redirectUri: '',
     endSessionRedirectUri: '',
-    discoveryUri: 'https://<OKTA_DOMAIN>/oauth2/default',
+    discoveryUri: '',
     scopes: ['openid', 'profile', 'offline_access'],
     requireHardwareBackedKeyStore: false,
   },
